@@ -14,15 +14,22 @@ public class PeprClicker extends JFrame implements ActionListener {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	private static int clicks;
+	protected static final long serialVersionUID = 1L;
+	protected static int clicks;
+	protected static int airos;
 	
-	private static final String prefix = "Pepø clicker BETA 0.1 | ";
+	protected static final String prefix = "Pepø clicker BETA 0.2 | ";
+	protected static final String suffix = " | ";
+	
+	protected static String title = prefix + "Pepø: " + clicks + " g" + suffix + "Airové: " + airos;
+	
+	
 	
 	public PeprClicker(){
-		super("Pepø clicker BETA 0.1 | Pepø: 0 g");
+		super("Pepø clicker BETA 0.2 | Pepø: 0 g | Airové: 0");
 		
 		clicks= 0;
+		airos =0;
 		System.out.println("Inicializuje sa GUI...");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ImageIcon icon = new ImageIcon("icon.jpg");
@@ -35,6 +42,9 @@ public class PeprClicker extends JFrame implements ActionListener {
 		JButton pepr = new JButton(peprIcon);	
 		pepr.addActionListener(this);
 		cont.add(pepr, BorderLayout.CENTER);
+		JButton airo = new JButton("Dokúpi Airov. 1 Airo = 5 kg pepøe.");
+		airo.addActionListener(new AiroListener());
+		cont.add(airo, BorderLayout.SOUTH);
 		setContentPane(cont);
 		System.out.println("Pepr a zbytok GUI pripraveny! Zapinam viditelnost!");
 		setVisible(true);
@@ -44,9 +54,13 @@ public class PeprClicker extends JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent arg0) {
 		int precl = clicks;
-		precl++;
+		if (airos == 0){
+			precl++;
+		}else{
+			precl += 1*(airos+1);
+		}
 		clicks = precl;
-		setTitle(prefix + "Pepø: " + clicks + " g");
-		System.out.println("Pridan 1 gram pepøe | Aktualna hodnota: " + clicks);
+		setTitle(prefix + "Pepø: " + clicks + " g" + suffix + "Airové: " + airos);
+		System.out.println("Pridan " + (1+airos) + "gram pepøe | Aktualna hodnota: " + clicks);
 	}
 }
