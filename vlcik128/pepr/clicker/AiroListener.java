@@ -17,7 +17,7 @@ public class AiroListener implements ActionListener{
 		
 		   
 		try {
-			String pepr = "airo.wav";
+			String pepr = "airo.ogg";
 			InputStream in;
 			AudioStream audioStream;
 			in = new FileInputStream(pepr);
@@ -40,7 +40,7 @@ public class AiroListener implements ActionListener{
 			PeprClicker.airos = precl;
 			Main.pc.setTitle(PeprClicker.title);
 		}else{
-			JOptionPane.showMessageDialog(null, "Nemáš 5 kg (5000 g) pepøe", "Málo pepøe", JOptionPane.ERROR_MESSAGE); 
+			JOptionPane.showMessageDialog(null, "NemÃ¡Å¡ 5 kg (5000 g) pepÃ¸e", "MÃ¡lo pepÃ¸e", JOptionPane.ERROR_MESSAGE); 
 		}
 		
 	}
