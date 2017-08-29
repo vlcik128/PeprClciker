@@ -17,7 +17,7 @@ public class AiroListener implements ActionListener{
 		
 		   
 		try {
-			String pepr = "airo.ogg";
+			String pepr = "airo.wav";
 			InputStream in;
 			AudioStream audioStream;
 			in = new FileInputStream(pepr);
