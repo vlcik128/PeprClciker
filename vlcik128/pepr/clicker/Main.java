@@ -6,7 +6,7 @@ public class Main {
 		System.out.println(s);
 	}
 	public static void main(String[] args){
-		log("PepøClicker BETA 0.2 by vlcik128 is going to be enabled.");
+		log("PepøClicker BETA 0.3 by vlcik128 is going to be enabled.");
 		log("System aktualizacii sa pripravuje");
 		// Aktualizacie
 		pc = new PeprClicker();
