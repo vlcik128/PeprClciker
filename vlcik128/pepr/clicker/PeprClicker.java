@@ -4,10 +4,15 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.InputStream;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
 
 public class PeprClicker extends JFrame implements ActionListener {
 
@@ -18,15 +23,31 @@ public class PeprClicker extends JFrame implements ActionListener {
 	protected static int clicks;
 	protected static int airos;
 	
-	protected static final String prefix = "Pepø clicker BETA 0.2 | ";
+	protected static final String prefix = "Pepø clicker BETA 0.3 | ";
 	protected static final String suffix = " | ";
 	
 	protected static String title = prefix + "Pepø: " + clicks + " g" + suffix + "Airové: " + airos;
 	
-	
+	private void introInit(){
+		System.out.println("Inicializacia spustenia zvukov");
+		
+	   
+		try {
+			String pepr = "pepr.wav";
+			InputStream in;
+			AudioStream audioStream;
+			in = new FileInputStream(pepr);
+			audioStream = new AudioStream(in);
+			System.out.println("Inicializacia dokoncena, spustam zvuky!");
+			AudioPlayer.player.start(audioStream);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}	
 	
 	public PeprClicker(){
-		super("Pepø clicker BETA 0.2 | Pepø: 0 g | Airové: 0");
+		super("Pepø clicker BETA 0.3 | Pepø: 0 g | Airové: 0");
 		
 		clicks= 0;
 		airos =0;
@@ -49,6 +70,7 @@ public class PeprClicker extends JFrame implements ActionListener {
 		System.out.println("Pepr a zbytok GUI pripraveny! Zapinam viditelnost!");
 		setVisible(true);
 		setIconImage(icon.getImage());
+		introInit();
 	}
 
 
@@ -61,6 +83,6 @@ public class PeprClicker extends JFrame implements ActionListener {
 		}
 		clicks = precl;
 		setTitle(prefix + "Pepø: " + clicks + " g" + suffix + "Airové: " + airos);
-		System.out.println("Pridan " + (1+airos) + "gram pepøe | Aktualna hodnota: " + clicks);
+		System.out.println("Pridan " + (1+airos) + " gram/u pepøe | Aktualna hodnota: " + clicks);
 	}
 }
